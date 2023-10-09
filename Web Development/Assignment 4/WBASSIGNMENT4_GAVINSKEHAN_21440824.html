@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+                function updateOutput() {
+                    var txt = document.getElementById("txtUserInput").value; // allows you to print to the screen
+                    var numchars = txt.length;
+                     var wordCount = 0;
+                     var charCount = 0;
+                    for (var i=0; i<numchars; i++) {
+                        var currLetter = txt.substr(i,1);
+                        if (currLetter == " ") { // ends the current word and starts a new one
+                                wordCount++;
+                            }
+                            else {
+                                charCount++;
+                            }
+                    } 
+                     txtOutput = "Number of Characters: "+charCount+"<br>Number of words: "+wordCount;
+                    document.getElementById("pOutput").innerHTML = txtOutput; // shows results
+       }    
+            </script>
+        </head>
+        <body>
+            <textarea id='txtUserInput' onkeyup="updateOutput();" value="Type your text here."></textarea><br>
+            <p id='pOutput'> </p>
+        </body>
+</html>

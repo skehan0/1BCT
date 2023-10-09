@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 6</title>
+
+<script>
+   
+   function onload(){
+            var leftPosition = Math.floor(Math.random()*600);
+            document.getElementById("divPeter").style.left = leftPosition +"px";
+            var topPosition = Math.floor(Math.random()*600);
+            document.getElementById("divPeter").style.top = topPosition +"px";
+    }
+
+    function movePeter() {
+            var leftPosition = Math.floor(Math.random()*600);
+            document.getElementById("divPeter").style.left = leftPosition +"px";
+            var topPosition = Math.floor(Math.random()*600);
+            document.getElementById("divPeter").style.top = topPosition +"px";
+    }    
+    
+</script>
+</head>
+<body onload = "onload()"> </body>
+      
+        <div onclick = "movePeter();" id="divPeter" style="position:absolute; left:800px; top:100px">
+            <img src="family guy.jpg">
+        </div>  
+</html>

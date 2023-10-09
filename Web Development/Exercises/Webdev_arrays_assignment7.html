@@ -1,0 +1,52 @@
+<!--gavin skehan, 21440824-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment7</title>
+        <script>
+          var myArray = [];
+          var sum = 0;
+          var average;
+          var largest = 0;
+          var smallest = 999;
+          var average = Math.round(sum / 100);
+
+            function nums() {
+                for (var i = 0;i<100;i++)
+                {
+                    var randomNumber = Math.floor(Math.random()* 999) + 1;
+                    myArray[i] = randomNumber;
+
+                    sum += myArray[i];
+
+                    if (myArray[i] > largest) {
+                        largest = myArray[i];
+                    }
+                    if (myArray[i] < smallest) {
+                        smallest = myArray[i];
+                    }
+                }
+
+            var p1 = document.getElementById("p1");
+            var p2 = document.getElementById("p2");
+
+            p1.innerHTML = "Sum: " + sum + "<br>" + "Average: " + average + "<br>" + "Largest Number: " + largest + "<br>" + "Smallest Number: " + smallest;
+
+            var numList = "List of Numbers: ";
+                 for(i=0;i<99; i++) {
+                     numList += myArray[i] + ",";
+                 }
+                 numList += myArray[99] + ".";
+
+                 p2.innerHTML = numList;
+             }
+ </script>
+</head>
+<body onload="nums()">
+<p id="p1"> </p>
+<p id="p2"> </p>
+</body>
+</html>

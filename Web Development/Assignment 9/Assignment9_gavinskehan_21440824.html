@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      th { background:#5555FF; }
+      .grey { background:#DDDDDD; } 
+      .day { background:#AAAAFF; } 
+      .today { background:#FFAAFF; } 
+    </style>
+  	<script>
+       function is_leap(year) {
+        if (year % 400 == 0)
+            return 1;
+        if (year % 100 == 0)
+            return 0;
+        if (year % 4 == 0)
+            return 0;
+      }
+
+      function numDaysYearly(year, month) {
+        if(month == 1){
+          return 0;
+        }
+        else if (month == 2) {
+          return 31;
+        }
+        else if (month == 3){
+          return 59 + is_leap(year);
+        }
+        else if (month == 4){
+          return 90 + is_leap(year);
+        }
+        else if (month == 5){
+          return 120 + is_leap(year);
+        }
+        else if (month == 6){
+          return 151 + is_leap(year);
+        }
+        else if (month == 7){
+          return 181 + is_leap(year);
+        }
+        else if (month == 8){
+          return 212 + is_leap(year);
+        }
+        else if (month == 9){
+          return 243 + is_leap(year);
+        }
+        else if (month == 10){
+          return 273 + is_leap(year);
+        }
+        else if (month == 11){
+          return 304 + is_leap(year);
+        }
+        else if (month == 12){
+          return 334 + is_leap(year);
+        }
+      }
+
+      function checkYear() {
+        var month = parseInt(document.getElementById("txtMonth").value);
+        var txt = document.getElementById("txtYear").value
+        var year = parseInt(txt);
+var i = 0;
+var j = 1700;
+if((0==j % 4) && (0 != j % 100) || (0 == j % 400)){
+  i++;
+  j++;
+}
+  else {
+    j++;
+  }
+
+i = x;
+        if (isNan(year))
+            alert(txt + "is not a number!");
+        else if(is_leap(year)==1)
+          alert(year + "is a leap year!");
+        else
+        alert(year + "is not a leap year");
+        var dayCounter = ( 1 + x + (365 *(year % 1700)));
+        var totalDays = dayCounter + numDaysYearly(year, month);
+        var monthBegins = totalDays %7;
+        document.getElementById("divOutput").innerHTML = getHtmlCalendar(month, monthBegins)
+      }
+
+      function firstDay(year, numDays1700) {
+        var numDays1700 = year - 1700;
+        var day1 = ((1 + numDays1700) % 7, firstDay);
+      }
+
+      function getHtmlCalendar(no_of_days, month, year) {
+        // build the 1st row of the table (fixed)
+        var html = "<table border=1><tr><th width=50>Sun</th><th width=50>Mon</th><th width=50>Tue</th><th width=50>Wed</th><th width=50>Thu</th><th width=50>Fri</th><th width=50>Sat</th></tr>";
+        
+          var no_of_days;
+
+          if (month == 9 || month == 4 || month == 6 || month == 11)
+        return 30;
+
+        if(month != 2)
+        return 31;
+
+        return (28+is_leap(year));
+      
+        var currColumn = 0; // which column (=day of week) are we currently adding?
+        
+        // loop 1: add grey cells (if any) for the days of the week prior to the 1st of the month
+        html += "<tr>";
+        for (i=0; i<no_of_days; i++) {
+          html += "<td class='grey'></td>";
+          currColumn++;
+        }
+            
+        // loop 2: add a blue cell for each day of the month    
+        var day=1; // 'day' is the day number in the month (it's our loop counter)
+        while (day <= no_of_days)
+        {
+          html += "<td class='day'>" + day + "</td>";
+          currColumn++;
+          // if we've just done a Saturday, we need to end the current row and start the next
+          if (currColumn==7) { 
+            html += "</tr><tr>"; // end row and start row
+            currColumn=0; // our next day will be a Sunday
+          }
+          day++;
+        }
+        
+        if (currColumn>0) {
+          for (i=currColumn; i<7; i++)
+            html += "<td class='grey'></td>";
+        }
+        
+        // close off the final row and the table itself
+        html += "</tr></table>";
+
+        // return the result (a string) as formatted HTML
+        return html;
+      }
+  	</script>
+  <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
+  <body>
+    year <input id='txtYear'><br>
+    month <input id='txtMonth'><br>
+
+    <button onclick='checkYear();'>Show Calendar</button><br>
+    <div id='divOutput'></div>
+  <script type="text/javascript">(function(){window['__CF$cv$params']={r:'6d9d89623cf3889e',m:'U5.43eUYECI5Crycl8ubk.7Url6fzI6Wn_tLfVm.kEA-1644246538-0-AbgkCceV3Xo/c0yEyRmna9ZsEDDWzc0fC1XeFRQ3YJ6GIDJVDpNc1QFnTR+x/xKtSc3vrcX1YSe6+4e06zYI8TOhw2BmjOwRDKX4y8jIoi/Wwmf1yyC4/ZRqD0dztpDsBC7/4EzJ5H53Pbh+kJy6sSf4Vs42emzdaIX+eaxNU5ze2ovO0PDnukkbxzicVCNsFmkU7WRgQ8xsn4CYwlFG/S1soYi9chg/MVld3TouMj1K',s:[0x072d80e02a,0x83fb634004],}})();</script></body>
+</html>

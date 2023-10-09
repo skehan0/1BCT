@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="calendar.css">
+    <title>Calendar week 16</title>
+<script> 
+
+function calendar() {
+    var numDays = parseInt(prompt("Enter the number of days in the month"));
+    var firstDay = parseInt(prompt("Enter the first day of the month"));
+    var dateCounter = 1;
+    var dayCounter = 0;
+            for(i = 0; i <firstDay;i++) {
+                document.getElementById("divoutput").innerHTML+= '<td>X</td>';
+                dayCounter++;
+            }
+            for(var i = 1; i <= numDays;i++) {
+                if(dayCounter>5) {
+                    document.getElementById("divOutput").innerHTML+="</tr><tr class = 'days'>";
+                        dayCounter=0;
+                }
+                document.getElementById("divOutput").innerHTML+="<td>"+dateCounter+"</td>";
+                        dayCounter++;
+                        dateCounter++;
+            }
+            document.getElementById("divOutput").innerHTML+="</table>";
+
+
+}
+</script>
+</head>
+<body onload="calendar()">
+<div id="divOutput">
+    <div id="container">
+        <table id="calendar" border = '1'>
+        <tr class="weekdays"> 
+              <th>Monday</th>
+              <th>Tuesday</th>
+              <th>Wedneday</th>
+              <th>Thursday</th>
+              <th>Friday</th>
+              <th>Saturday</th>
+              <th>Sunday</th>
+              <input type="date" onclick="calendar()" value="display">;
+        </tr>  
+      
+     </table>
+    </div>
+    </div>    
+       
+</body>
+</html>

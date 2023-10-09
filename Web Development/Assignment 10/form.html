@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms Table</title>
+    <style>
+        table{
+            color: rgb(255, 255, 255);
+            background-color: rgb(124, 123, 123);
+            max-width: 300px;
+            text-align: left;
+            position: absolute;
+            height: 300px;
+            size: 300px;
+            table-layout: fixed;
+        }
+        td{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-wrap: break-word;
+        }
+        button{
+            color: red;
+            background-color: rgb(184, 184, 184);
+        }
+        
+    </style>
+        <script>
+            function handleclick(element){
+            var i = 0;
+            var j = 0;
+            var question = document.getElementById("Question").value;
+            if (question === "") {
+            alert("Enter your question")
+            }
+            else{
+                i = 1;
+            }
+
+            var name = document.getElementById("Name").value;
+            if (name === "") {
+            alert("Entter your name")
+            }
+            else {
+                j = 1;
+            }
+
+            var email = document.getElementById("Email").value;
+            if(email.indexOf("@" && ".") !== -1){
+            }
+            else{
+            alert("This email not valid, enter a valid email");
+            }
+
+            if ( i == 1 && j == 1 && email.indexOf("@" && ".") !== -1) {
+                alert("Submission complete!");
+            }
+            }
+        </script>
+    </head>
+    <body>
+        <table border="0">
+            <tr><td class="Questions">Question Category</td><td class="Questions"><select class="Inputs" name="listlabel" id="listid">
+            <option value="1">Goods for Sale</option>
+            <option value="2">Complaints</option>
+            <option value="3">Support</option>
+            </select></td></tr>
+            <tr><td class="Questions" >Question</td><td class="Questions"><textarea id="Question" class="Inputs"></textarea></td></tr>
+            <tr><td class="Questions" >Your Name</td><td class="Questions"><input id="Name" class="Inputs" ></input></td></tr>
+            <tr><td class="Questions">Your Email</td><td class="Questions"><input id="Email" class="Inputs"></input></td></tr>
+            <tr><td class="Questions"></td><td class="Questions"><button class="Button" onclick="handleclick();"> Submit </button></td></tr>
+        </table>
+    </body>
+</html> 

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      th { background:#5555FF; }
+      .grey { background:#DDDDDD; } 
+      .day { background:#AAAAFF; } 
+      .today { background:#FFAAFF; } 
+    </style>
+  	<script>
+        
+        function showCalendar() {
+        var year = parseInt(document.getElementById("txtYear").value);
+        var month = parseInt(document.getElementById("txtMonth").value);
+        document.getElementById("divOutput").innerHTML = getHtmlCalendar(is_leap, checkYear, no_of_days, firstDay, numDays1700, year, month);
+      }
+     
+      function getHtmlCalendar(is_leap, checkYear, no_of_days, firstDay, numDays1700, year, month) {
+        // build the 1st row of the table (fixed)
+        var html = "<table border=1><tr><th width=50>Sun</th><th width=50>Mon</th><th width=50>Tue</th><th width=50>Wed</th><th width=50>Thu</th><th width=50>Fri</th><th width=50>Sat</th></tr>";
+        
+          function is_leap(year) {
+        if (year % 400 == 0)
+            return 1;
+        if (year % 100 == 0)
+            return 0;
+        if (year % 4 == 0)
+            return 0;
+      }
+
+      function checkYear() {
+        var txt = document.getElementById("txtYear").value
+        var year = parseInt(txt);
+        if (isNan(year))
+            alert(txt + "is not a number!");
+        else if(is_leap(year)==1)
+          alert(year + "is a leap year!");
+        else
+        alert(year + "is not a leap year");
+      }
+
+      function no_of_days(year, month) {
+        if (month == 9 || month == 4 || month == 6 || month == 11)
+        return 30;
+
+        if(month != 2)
+        return 31;
+
+        return (28+is_leap(year));
+      }
+
+      function firstDay(year, numDays1700) {
+        var numDays1700 = year - 1700;
+        var day1 = ((1 + numDays1700) % 7, firstDay);
+      }
+
+        var currColumn = 0; // which column (=day of week) are we currently adding?
+        
+        // loop 1: add grey cells (if any) for the days of the week prior to the 1st of the month
+        html += "<tr>";
+        for (i=0; i<firstday; i++) {
+          html += "<td class='grey'></td>";
+          currColumn++;
+        }
+            
+        // loop 2: add a blue cell for each day of the month    
+        var day=1; // 'day' is the day number in the month (it's our loop counter)
+        while (day <= noofdays)
+        {
+          html += "<td class='day'>" + day + "</td>";
+          currColumn++;
+          // if we've just done a Saturday, we need to end the current row and start the next
+          if (currColumn==7) { 
+            html += "</tr><tr>"; // end row and start row
+            currColumn=0; // our next day will be a Sunday
+          }
+          day++;
+        }
+        
+        // loop 3: add grey cells (if any) for the days of the week after the last day of the month
+        // in order to neatly complete the table on a Saturday
+        if (currColumn>0) {
+          for (i=currColumn; i<7; i++)
+            html += "<td class='grey'></td>";
+        }
+        
+        // close off the final row and the table itself
+        html += "</tr></table>";
+
+        // return the result (a string) as formatted HTML
+        return html;
+      }
+  	</script>
+  <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
+  <body>
+    year <input id='txtYear'><br>
+    month <input id='txtMonth'><br>
+
+    <button onclick='showCalendar();'>Show Calendar</button><br>
+    <div id='divOutput'></div>
+  <script type="text/javascript">(function(){window['__CF$cv$params']={r:'6d9d89623cf3889e',m:'U5.43eUYECI5Crycl8ubk.7Url6fzI6Wn_tLfVm.kEA-1644246538-0-AbgkCceV3Xo/c0yEyRmna9ZsEDDWzc0fC1XeFRQ3YJ6GIDJVDpNc1QFnTR+x/xKtSc3vrcX1YSe6+4e06zYI8TOhw2BmjOwRDKX4y8jIoi/Wwmf1yyC4/ZRqD0dztpDsBC7/4EzJ5H53Pbh+kJy6sSf4Vs42emzdaIX+eaxNU5ze2ovO0PDnukkbxzicVCNsFmkU7WRgQ8xsn4CYwlFG/S1soYi9chg/MVld3TouMj1K',s:[0x072d80e02a,0x83fb634004],}})();</script></body>
+</html>
