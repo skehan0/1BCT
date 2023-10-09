@@ -1,0 +1,3 @@
+﻿  week22.c
+C:\Users\skeha\source\repos\week22locations.c\week22locations.c\week22.c(41,29): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  week22locations.c.vcxproj -> C:\Users\skeha\source\repos\week22locations.c\x64\Debug\week22locations.c.exe
